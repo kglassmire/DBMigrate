@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using NLog;
 namespace DBMigrate
 {    
-    public class DBMigrate
+    public class DbMigrate
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
     }

@@ -46,9 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionStringParts.cs" />
-    <Compile Include="DBDiff.cs" />
-    <Compile Include="DBDump.cs" />
-    <Compile Include="DBMigrate.cs" />
+    <Compile Include="DbDiff.cs" />
+    <Compile Include="DbDiffContext.cs" />
+    <Compile Include="DbDump.cs" />
+    <Compile Include="DbMigrate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>

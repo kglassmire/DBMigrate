@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,8 @@ namespace DBConsole
         private static Logger logger = LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
         {            
-            DBDump dbDump = new DBDump();
+            DbDump dbDump = new DbDump(ConfigurationManager.ConnectionStrings["local"].ConnectionString, 
+                ConfigurationManager.ConnectionStrings["local"].Name);
             logger.Info("Beginning DBDump");
             dbDump.PerformDBDump();
         }
