@@ -13,7 +13,7 @@ namespace DatabaseSync.Test
         [Test]  
         public void CheckExistenceOfSchemaReturnsBoolean()
         {
-            PublishContext context = new PublishContext("User ID=postgres;Password=***REMOVED***;Host=localhost;Port=5432;Database=site;");
+            PublishContext context = new PublishContext("User ID=postgres;Password=development;Host=localhost;Port=5432;Database=site;");
             Publish publish = new Publish(context);
 
             publish.DetermineCurrentSchemaVersion();
