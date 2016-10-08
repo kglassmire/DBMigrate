@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 using DBMigrate;
 using NLog;
 
-namespace DBConsole
+namespace DatabaseSyncConsole
 {
     class Program
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
-        {            
-            Dump dbDump = new Dump(ConfigurationManager.ConnectionStrings["local"].ConnectionString, 
-                ConfigurationManager.ConnectionStrings["local"].Name);
+        {
+            Dump dbDump = new Dump(ConfigurationManager.ConnectionStrings["local"].ConnectionString,
+            ConfigurationManager.ConnectionStrings["local"].Name);
             logger.Info("Beginning DBDump");
             dbDump.PerformDBDump();
         }

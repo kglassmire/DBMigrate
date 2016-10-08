@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DBConsole")]
+[assembly: AssemblyTitle("DatabaseSyncConsole")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DBConsole")]
+[assembly: AssemblyProduct("DatabaseSyncConsole")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c2fac9c3-6c20-40e4-92d8-352621d01862")]
+[assembly: Guid("d6d20bad-e567-4a6d-aff4-21784e4e126e")]
 
 // Version information for an assembly consists of the following four values:
 //
