@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBMigrate", "DBMigrate\DBMigrate.csproj", "{D8A41811-408B-4691-A372-456A2A6B8603}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSync", "DatabaseSync\DatabaseSync.csproj", "{D8A41811-408B-4691-A372-456A2A6B8603}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBConsole", "DBConsole\DBConsole.csproj", "{C2FAC9C3-6C20-40E4-92D8-352621D01862}"
 EndProject

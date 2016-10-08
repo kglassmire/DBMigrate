@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DBMigrate</RootNamespace>
-    <AssemblyName>DBMigrate</AssemblyName>
+    <AssemblyName>DatabaseSync</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,10 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionStringParts.cs" />
-    <Compile Include="DbDiff.cs" />
-    <Compile Include="DbDiffContext.cs" />
-    <Compile Include="DbDump.cs" />
-    <Compile Include="DbMigrate.cs" />
+    <Compile Include="Diff.cs" />
+    <Compile Include="DiffContext.cs" />
+    <Compile Include="Dump.cs" />
+    <Compile Include="Migrate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>

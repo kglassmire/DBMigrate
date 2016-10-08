@@ -11,14 +11,14 @@ using NLog;
 
 namespace DBMigrate
 {
-    public class DbDump
+    public class Dump
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
         private ConnectionStringParts _connectionStringParts;
         private string _connectionStringName;
         private string _postgresSQLPath;
 
-        public DbDump(String connectionString, String connectionStringName)
+        public Dump(String connectionString, String connectionStringName)
         {
             _connectionStringName = connectionStringName;
             _connectionStringParts = new ConnectionStringParts(connectionString);

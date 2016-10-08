@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBMigrate
 {
-    public class DbDiffContext
+    public class DiffContext
     {
         public ConnectionStringParts ConnectionStringParts { get; set; }
         public string Name { get; set; }        

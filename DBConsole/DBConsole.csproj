@@ -62,9 +62,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DBMigrate\DBMigrate.csproj">
+    <ProjectReference Include="..\DatabaseSync\DatabaseSync.csproj">
       <Project>{d8a41811-408b-4691-a372-456a2a6b8603}</Project>
-      <Name>DBMigrate</Name>
+      <Name>DatabaseSync</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

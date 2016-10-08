@@ -12,14 +12,14 @@ using NLog;
 
 namespace DBMigrate
 {
-    public class DbDiff
+    public class Diff
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
         private string _apgDiffPath;
-        private DbDiffContext _sourceContext;
-        private DbDiffContext _destinationContext;
+        private DiffContext _sourceContext;
+        private DiffContext _destinationContext;
 
-        public DbDiff(DbDiffContext sourceContext, DbDiffContext destinationContext)
+        public Diff(DiffContext sourceContext, DiffContext destinationContext)
         {
             _sourceContext = sourceContext;
             _destinationContext = destinationContext;
@@ -56,7 +56,7 @@ namespace DBMigrate
             }
         }
 
-        private bool CreateFilesForDiff(DbDiffContext context)
+        private bool CreateFilesForDiff(DiffContext context)
         {
             bool success = false;
             try

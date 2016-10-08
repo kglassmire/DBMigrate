@@ -14,7 +14,7 @@ namespace DBConsole
         private static Logger logger = LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
         {            
-            DbDump dbDump = new DbDump(ConfigurationManager.ConnectionStrings["local"].ConnectionString, 
+            Dump dbDump = new Dump(ConfigurationManager.ConnectionStrings["local"].ConnectionString, 
                 ConfigurationManager.ConnectionStrings["local"].Name);
             logger.Info("Beginning DBDump");
             dbDump.PerformDBDump();
