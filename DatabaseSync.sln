@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSync", "DatabaseSyn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSyncConsole", "DatabaseSyncConsole\DatabaseSyncConsole.csproj", "{D6D20BAD-E567-4A6D-AFF4-21784E4E126E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSync.Test", "DatabaseSync.Test\DatabaseSync.Test.csproj", "{8F33A7E2-74AF-4FDD-A31F-7916EC121722}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D6D20BAD-E567-4A6D-AFF4-21784E4E126E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6D20BAD-E567-4A6D-AFF4-21784E4E126E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6D20BAD-E567-4A6D-AFF4-21784E4E126E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F33A7E2-74AF-4FDD-A31F-7916EC121722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F33A7E2-74AF-4FDD-A31F-7916EC121722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F33A7E2-74AF-4FDD-A31F-7916EC121722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F33A7E2-74AF-4FDD-A31F-7916EC121722}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

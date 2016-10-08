@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NLog;
 
-namespace DBMigrate
+namespace DatabaseSync
 {
     public class Dump
     {
@@ -26,13 +26,19 @@ namespace DBMigrate
                 ConfigurationManager.AppSettings["PostgreSQLExecutable"]);
         }
 
-        public void PerformDBDump()
+        public List<String> PerformDBDump()
         {
             string dumpFileName = String.Format("{0:yyMMddHHmmss}_localDump.backup", DateTime.Now);
             string dumpFileNameSQL = String.Format("{0:yyMMddHHmmss}_localDump.sql", DateTime.Now);
 
             StartPGDumpProcess(_connectionStringParts, dumpFileName, DumpType.FullBackup);
             StartPGDumpProcess(_connectionStringParts, dumpFileNameSQL, DumpType.SQLBackup);
+
+            List<string> filePaths = new List<string>();
+            filePaths.Add(dumpFileName);
+            filePaths.Add(dumpFileNameSQL);
+
+            return filePaths;
         }
 
         private bool IsValidConfiguration()
@@ -100,8 +106,8 @@ namespace DBMigrate
                         connectionStringParts.Port, connectionStringParts.User, outputFile,
                         connectionStringParts.Database);
                     break;
-                case DumpType.SQLBackup:
-                    arguments = string.Format("-h {0} -p {1} -U {2} -F p -b -v -f {3} -s {4}", 
+                case DumpType.SQLBackup: // this dump is non-verbose so we don't get timestamps, etc.
+                    arguments = string.Format("-h {0} -p {1} -U {2} -F p -b -f {3} -s {4}", 
                         connectionStringParts.Host,
                         connectionStringParts.Port, connectionStringParts.User, outputFile, 
                         connectionStringParts.Database);

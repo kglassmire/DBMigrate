@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DBMigrate;
+using DatabaseSync;
 using NLog;
 
 namespace DatabaseSyncConsole
@@ -17,7 +17,12 @@ namespace DatabaseSyncConsole
             Dump dbDump = new Dump(ConfigurationManager.ConnectionStrings["local"].ConnectionString,
             ConfigurationManager.ConnectionStrings["local"].Name);
             logger.Info("Beginning DBDump");
-            dbDump.PerformDBDump();
+
+            var filePaths = dbDump.PerformDBDump();
+            var sqlDumpFileName = filePaths.SingleOrDefault(x => x.EndsWith("sql"));
+
+            Publish dbPublish = new Publish(new PublishContext(ConfigurationManager.ConnectionStrings["local"].ConnectionString), sqlDumpFileName);
+
         }
     }
 }

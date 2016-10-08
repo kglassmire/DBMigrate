@@ -6,7 +6,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBMigrate
+namespace DatabaseSync
 {
     public class ConnectionStringParts
     {
