@@ -29,15 +29,23 @@ namespace DBMigrate
 
         public void PerformDBDump()
         {
-            string _localDumpFileName = String.Format("localDump{0:yyMMddHHmmss}.backup", DateTime.Now);
-            string _localDumpFileNameSQL = String.Format("localDump{0:yyMMddHHmmss}.sql", DateTime.Now);
-            string _remoteDumpFileName = String.Format("remoteDump{0:yyMMddHHmmss}.backup", DateTime.Now);
-            string _remoteDumpFileNameSQL = String.Format("remoteDump{0:yyMMddHHmmss}.sql", DateTime.Now);
+            string _localDumpFileName = String.Format("{0:yyMMddHHmmss}_localDump.backup", DateTime.Now);
+            string _localDumpFileNameSQL = String.Format("{0:yyMMddHHmmss}_localDump.sql", DateTime.Now);
+            string _remoteDumpFileName = String.Format("{0:yyMMddHHmmss}_remoteDump.backup", DateTime.Now);
+            string _remoteDumpFileNameSQL = String.Format("{0:yyMMddHHmmss}_remoteDump.sql", DateTime.Now);
 
+            logger.Info("Starting local raw backup.");
             StartPGDumpProcess(_localConnectionStringParts, _localDumpFileName, DumpType.FullBackup);
+            logger.Info("Completed local raw backup.");
+            logger.Info("Starting local sql backup.");
             StartPGDumpProcess(_localConnectionStringParts, _localDumpFileNameSQL, DumpType.SQLBackup);
-            //StartPGDumpProcess(_remoteConnectionStringParts, _remoteDumpFileName, DumpType.FullBackup);
-            //StartPGDumpProcess(_remoteConnectionStringParts, _remoteDumpFileNameSQL, DumpType.SQLBackup);
+            logger.Info(("Completed local sql backup."));
+            logger.Info("Starting remote raw backup.");
+            StartPGDumpProcess(_remoteConnectionStringParts, _remoteDumpFileName, DumpType.FullBackup);
+            logger.Info("Completed remote raw backup.");
+            logger.Info("Starting remote sql backup.");
+            StartPGDumpProcess(_remoteConnectionStringParts, _remoteDumpFileNameSQL, DumpType.SQLBackup);
+            logger.Info("Completed remote sql backup.");
         }
 
         private bool IsValidConfiguration()
@@ -62,9 +70,8 @@ namespace DBMigrate
                 FileName = _postgresSQLPath,
                 CreateNoWindow = true,
                 UseShellExecute = false,
-                RedirectStandardError = true,
-                RedirectStandardInput = true,
                 RedirectStandardOutput = true,
+                RedirectStandardError = true,
                 WorkingDirectory = Environment.CurrentDirectory,
                 Arguments = arguments                
             };
@@ -75,17 +82,22 @@ namespace DBMigrate
             }            
 
             var process = new Process { StartInfo = startInfo };
+            process.OutputDataReceived += new DataReceivedEventHandler(LogOutput);
+            process.ErrorDataReceived += new DataReceivedEventHandler(LogOutput);
 
             process.Start();
-
-            var readerOutput = process.StandardOutput;
-            var readerError = process.StandardError;
-            //while (!readerOutput.EndOfStream)
-            //{
-            //    logger.Info(readerOutput.ReadLine());                                
-            //}
-
+            process.BeginErrorReadLine();
+            process.BeginOutputReadLine();
             process.WaitForExit();
+            process.Close();
+        }
+
+        private static void LogOutput(object sender, DataReceivedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(e.Data))
+            {
+                logger.Info(e.Data);
+            }
         }
 
         private string GetArgumentsForDumpType(DumpType dumpType, ConnectionStringParts connectionStringParts, string outputFile)

@@ -12,8 +12,9 @@ namespace DBConsole
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
-        {
+        {            
             DBDump dbDump = new DBDump();
+            logger.Info("Beginning DBDump");
             dbDump.PerformDBDump();
         }
     }
